@@ -34,8 +34,30 @@ def find_score(nums : list[int]) -> int:
     return score
 
 
-print(get_final_state([2,1,3,5,6], 5, 2))
-print(f'______Find score ______')
-print(find_score([2,1,3,4,5,2]))
-print('TEST')
-print(min([, 8, 1, 4, 5, 2]))
+def final_prices(prices: list[int]) -> list[int]:
+    n = len(prices)
+    answer = prices[:]
+
+    for i in range(n):
+        for j in range(i + 1, n):
+            if j > i and prices[j] <= prices[i]:
+                answer[i] = prices[i] - prices[j]
+                break
+    return answer
+
+print(final_prices([8,4,6,2,3]))
+
+def fill_prefix_sum(nums: list[int], n:int, presix_sum:list[int]) -> list[int]:
+    prefix_sum[0] = nums[0]
+
+    for i in range(1, n):
+        prefix_sum[i] = prefix_sum[i - 1] + nums[i]
+    return prefix_sum
+
+arr = [1,2,3,4,5,6]
+n = len(arr)
+
+prefix_sum = [0 for i in range(n)]
+
+print(f'prefix sum {fill_prefix_sum(arr, n, prefix_sum)}')
+
